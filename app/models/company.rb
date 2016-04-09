@@ -12,4 +12,6 @@
 class Company < ActiveRecord::Base
   has_many :users
   has_many :forms
+
+  enum  company_type: [:bank, :cooperative, :government, :ngo]
 end

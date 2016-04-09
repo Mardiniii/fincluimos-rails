@@ -18,6 +18,13 @@
 #  role                   :integer
 #  company_id             :integer
 #  auth_token             :string
+#  first_name             :string
+#  last_name              :string
+#  id_number              :string
+#  avatar_file_name       :string
+#  avatar_content_type    :string
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

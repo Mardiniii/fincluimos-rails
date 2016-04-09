@@ -1,2 +1,16 @@
-<h1>Admin::Collectors#index</h1>
-<p>Find me in app/views/admin/collectors/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <% @collectors.each do |collector| %>
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+          <img src="<%= collector.avatar.url(:thumb) %>" alt="..." class="img-responsive">
+          <div class="caption">
+            <h3>Asesor Móvil</h3>
+            <p><%= "#{collector.first_name} #{collector.last_name} " %></p>
+            <p><%= link_to "Editar", edit_admin_collector_path(collector), class: "btn btn-warning" %>  <%= link_to "Eliminar", admin_collector_path(collector), method: :delete, data: { confirm: '¿Esta seguro que desea eliminarlo?' }, class: "btn btn-danger" %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
