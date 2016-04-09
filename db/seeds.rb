@@ -3,7 +3,7 @@ if Rails.env.development?
 
   company = Company.find_or_create_by(name: "Kaizen Devs")
   admin = company.users.find_or_create_by(email: "admin@kforms.com") { |u| u.password = "password"; u.role = :admin }
-  info_collector = company.users.find_or_create_by(email: "info_collector@kforms.com") { |u| u.password = "password"; u.role = :info_collector }
+  info_collector = company.users.find_or_create_by(email: "info_collector@kforms.com") { |u| u.password = "password"; u.role = :info_collector; u.avatar = File.new("app/assets/images/kaizen-5.jpg"); u.first_name = "Sebastian"; u.last_name = "Zapata Mardini" }
 
   form = company.forms.find_or_create_by(name: "Solicitud de Micro-crédito")
 

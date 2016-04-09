@@ -1,8 +1,13 @@
 <div class="col-md-6 col-md-offset-3">
-  <%= form_for(@collector, url: admin_collectors_path) do |collector| %>
+  <% if @collector.new_record? %>
+    <% path = admin_collectors_path %>
+  <% else %>
+    <% path = admin_collector_path(@collector) %>
+  <% end %>
+  <%= form_for(@collector, url: path) do |collector| %>
     <% if @collector.errors.any? %>
       <% @collector.errors.each do |attribute, message| %>
-        <h3 class="validation-error"><%= message %></h3>
+        <h3 class="validation-error"><%= attribute %> <%= message %></h3>
       <% end %>
     <% end %>
 
@@ -26,9 +31,33 @@
       <%= collector.text_field :id_number, class: "form-control", id: "password" %>
     </div>
 
-    <div class="col-md-12">
+    <% if collector.object.avatar.url != "http://i592.photobucket.com/albums/tt5/Mardini03/imagen-no-disponible.png" %>
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-4 edit_images">
+          <%= image_tag collector.object.avatar.url(:mini_thumb) %>
+        </div>
+
+        <div class="col-md-9 col-sm-8 col-xs-8">
+          <%= collector.label :id_number, "Imágen de perfil:", class: "lead lead-lg"  %>
+          <div class="col-md-9 col-sm-9 col-xs-9">
+            <div class="form-group reg-email">
+              <div>
+                <%= collector.file_field :image, class: "input-file" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="field form-group">
+        <%= collector.label :id_number, "Imágen de perfil:", class: "lead lead-lg"  %>
+        <%= collector.file_field :image, required: true, class: "input-file form-control" %>
+      </div>
+    <% end %>
+
+    <div class="row" style="margin-top: 20px;">
       <div class="actions form-group text-center">
-        <%= collector.submit "Save collector", class: "btn btn-ar btn-lg btn-success" %>
+        <%= collector.submit "Guardar Información", class: "btn btn-ar btn-lg btn-success" %>
       </div>
     </div>
   <% end %>
