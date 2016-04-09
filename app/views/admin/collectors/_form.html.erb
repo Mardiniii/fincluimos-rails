@@ -1,0 +1,22 @@
+<%= form_for(@collector, url: collectors_path) do |collector| %>
+  <% if @collector.errors.any? %>
+    <% @collector.errors.each do |attribute, message| %>
+      <h3 class="validation-error"><%= message %></h3>
+    <% end %>
+  <% end %>
+  <div class="row">
+    <%= render 'basic_info', collector: collector %>
+    <%= render 'secondary_info', collector: collector %>
+  </div>
+  <div class="row">
+    <%= render 'collector_images', collector: collector %>
+    <%= render 'section_image', collector: collector %>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions form-group text-center">
+        <%= collector.submit "Save collector", class: "btn btn-ar btn-lg btn-success" %>
+      </div>
+    </div>
+  </div>
+<% end %>
