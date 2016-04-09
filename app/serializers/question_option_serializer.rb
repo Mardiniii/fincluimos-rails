@@ -9,7 +9,6 @@
 #  updated_at  :datetime         not null
 #
 
-class QuestionOption < ActiveRecord::Base
-  belongs_to :question
-  
+class QuestionOptionSerializer < ActiveModel::Serializer
+  attributes :id, :text
 end

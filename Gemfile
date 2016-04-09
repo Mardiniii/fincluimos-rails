@@ -30,3 +30,4 @@ group :production do
 end
 
 gem 'table_print'
+gem 'active_model_serializers'

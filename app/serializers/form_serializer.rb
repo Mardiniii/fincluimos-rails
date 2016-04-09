@@ -10,10 +10,7 @@
 #  description :text
 #
 
-class Form < ActiveRecord::Base
-  belongs_to :company
+class FormSerializer < ActiveModel::Serializer
+  attributes :id, :name, :description
   has_many :questions
-  has_many :form_responses
-
-  accepts_nested_attributes_for :questions
 end
