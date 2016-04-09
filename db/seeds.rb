@@ -1,9 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+if Rails.env.development?
+  User.find_or_create_by(email: 'sebas@kaizendevs.com') { |u| u.password =  "holamama"; u.role = :superadmin }
 
-User.create(email: 'sebas@kaizendevs.com', password: "holamama", role: 0)
+  company = Company.find_or_create_by(name: "Kaizen Devs")
+  admin = company.users.find_or_create_by(email: "admin@kforms.com") { |u| u.password = "password"; u.role = :admin }
+  info_collector = company.users.find_or_create_by(email: "info_collector@kforms.com") { |u| u.password = "password"; u.role = :info_collector }
 
+#  form = company.forms.create(name: "Solicitud de Micro-crédito")
+#  form.questions.create([
+#    { text: "" }
+#  ])
+end
