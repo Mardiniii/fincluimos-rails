@@ -11,4 +11,6 @@
 
 class Form < ActiveRecord::Base
   belongs_to :company
+  has_many :questions
+  has_many :form_responses
 end

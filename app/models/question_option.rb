@@ -11,4 +11,6 @@
 
 class QuestionOption < ActiveRecord::Base
   belongs_to :question
+  has_many :question_option_question_responses
+  has_many :question_responses, through: :question_option_question_responses
 end

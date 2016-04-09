@@ -1,5 +1,3 @@
-module Api
-  class ApiController < ApplicationController
-    include Authenticable
-  end
+class Api::ApiController < ApplicationController
+  include Authenticable
 end

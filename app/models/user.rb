@@ -27,4 +27,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   enum role: [:superadmin, :admin, :info_collector]
+  belongs_to :company
+
+  before_create :generate_authentication_token!
+
+  def generate_authentication_token!
+    begin
+      self.auth_token = Devise.friendly_token
+    end while self.class.exists?(auth_token: auth_token)
+  end
+
 end
