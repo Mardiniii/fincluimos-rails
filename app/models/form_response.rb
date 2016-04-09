@@ -10,5 +10,5 @@
 
 class FormResponse < ActiveRecord::Base
   belongs_to :form
-  has_many :question_responses
+  has_many :question_responses, dependent: :destroy
 end

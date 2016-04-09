@@ -12,8 +12,8 @@
 
 class Question < ActiveRecord::Base
   belongs_to :form
-  has_many :question_options
-  has_many :question_responses
+  has_many :question_options, dependent: :destroy
+  has_many :question_responses, dependent: :destroy
 
   enum question_type: [:dropdown,:input,:checkbox,:text]
 end
