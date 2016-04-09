@@ -7,41 +7,31 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="text-center">Nuevo Formulario</h2>
-        <%= form.fields_for :questions do |question| %>
-          <%= link_to_add_association 'add question', form, :questions, class: "btn btn-default" %>
-        <% end %>
+        <h1 class="text-center">Nuevo Formulario</h1>
       </div>
     </div>
     <div class="row">
       <div class="col-md-4">
+        <h2 class="text-center">Tipo de pregunta</h2>
         <div class="panel panel-default">
-          <a href="" class="question-type-option">
-            <div class="panel-body">
-              Selección Multiple
-            </div>
-          </a>
+          <%= form.fields_for :questions do |question| %>
+            <%= link_to_add_association '<div class="panel-body">Selección Multiple</div>'.html_safe, form, :questions, class: "add-new-question question-type-option" %>
+          <% end %>
         </div>
         <div class="panel panel-default">
-          <a href="" class="question-type-option">
-            <div class="panel-body">
-              Única Respuesta Dropdown
-            </div>
-          </a>
+          <%= form.fields_for :questions do |question| %>
+            <%= link_to_add_association '<div class="panel-body">Única Respuesta Dropdown</div>'.html_safe, form, :questions, class: "add-new-question question-type-option" %>
+          <% end %>
         </div>
         <div class="panel panel-default">
-          <a href="" class="question-type-option">
-            <div class="panel-body">
-              Corta Respuesta Abierta input
-            </div>
-          </a>
+          <%= form.fields_for :questions do |question| %>
+            <%= link_to_add_association '<div class="panel-body">Respuesta abierta corta</div>'.html_safe, form, :questions, class: "add-new-question question-type-option" %>
+          <% end %>
         </div>
         <div class="panel panel-default">
-          <a href="" class="question-type-option">
-            <div class="panel-body">
-              Larga Respuesta Abierta text
-            </div>
-          </a>
+          <%= form.fields_for :questions do |question| %>
+            <%= link_to_add_association '<div class="panel-body">Respuesta abierta extensa</div>'.html_safe, form, :questions, class: "add-new-question question-type-option" %>
+          <% end %>
         </div>
       </div>
       <div class="col-md-8" id="questions-container">
@@ -50,13 +40,11 @@
             <h3 class="validation-error"><%= attribute %> <%= message %></h3>
           <% end %>
         <% end %>
-
-        <div class="row" style="margin-top: 20px;">
-          <div class="actions form-group text-center">
-            <%= form.submit "Guardar Formulario", class: "btn btn-ar btn-lg btn-success" %>
-          </div>
+      </div>
+      <div class="row" style="margin-top: 20px;">
+        <div class="actions form-group text-center">
+          <%= form.submit "Guardar Formulario", class: "btn btn-ar btn-lg btn-success" %>
         </div>
-
       </div>
     </div>
     <%#= render 'form' %>
@@ -69,3 +57,11 @@
     background-color: #dfdfdf !important;
   }
 </style>
+
+<script>
+  $(document).ready(function() {
+    $("a.add-new-question").
+      data("association-insertion-method", 'append').
+      data("association-insertion-node", '#questions-container');
+  });
+</script>
