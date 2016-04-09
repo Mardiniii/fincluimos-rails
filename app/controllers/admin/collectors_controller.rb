@@ -1,6 +1,6 @@
 class Admin::CollectorsController < ApplicationController
   before_action :authenticate_user!
-  before_filter :content_permission
+  before_filter :company_permission
 
   def new
     @collector = User.new
