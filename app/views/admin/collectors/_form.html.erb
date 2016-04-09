@@ -1,22 +1,25 @@
-<%= form_for(@collector, url: collectors_path) do |collector| %>
-  <% if @collector.errors.any? %>
-    <% @collector.errors.each do |attribute, message| %>
-      <h3 class="validation-error"><%= message %></h3>
+<div class="col-md-6 col-md-offset-3">
+  <%= form_for(@collector, url: admin_collectors_path) do |collector| %>
+    <% if @collector.errors.any? %>
+      <% @collector.errors.each do |attribute, message| %>
+        <h3 class="validation-error"><%= message %></h3>
+      <% end %>
     <% end %>
-  <% end %>
-  <div class="row">
-    <%= render 'basic_info', collector: collector %>
-    <%= render 'secondary_info', collector: collector %>
-  </div>
-  <div class="row">
-    <%= render 'collector_images', collector: collector %>
-    <%= render 'section_image', collector: collector %>
-  </div>
-  <div class="row">
+
+    <div class="field form-group">
+      <%= collector.label :email, "Correo Electrónico:", class: "lead lead-lg" %>
+      <%= collector.text_field :email, required: true, :rows => 5, class: "form-control", id: "new_user_email" %>
+    </div>
+
+    <div class="field form-group">
+      <%= collector.label :password, "Contraseña", class: "lead lead-lg"  %>
+      <%= collector.password_field :password, class: "form-control", id: "password" %>
+    </div>
+
     <div class="col-md-12">
       <div class="actions form-group text-center">
         <%= collector.submit "Save collector", class: "btn btn-ar btn-lg btn-success" %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
