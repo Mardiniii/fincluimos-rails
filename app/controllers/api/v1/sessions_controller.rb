@@ -9,7 +9,7 @@ class Api::V1::SessionsController < Api::V1::ApiController
       sign_in user, store: false
       user.generate_authentication_token!
       user.save
-      render json: user, status: 200, location: [:api, user]
+      render json: user, status: 200
     else
       render :json => {:success => false, :errors => ["Invalid email or password"]}, status: 422
     end
