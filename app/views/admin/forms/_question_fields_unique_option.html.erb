@@ -5,4 +5,9 @@
     <%= f.text_field :text, class: "form-control", id: "password" %>
     <%= f.hidden_field :question_type, :value => :dropdown %>
   </div>
+
+  <%= f.fields_for :question_options do |question_option| %>
+    <%= render 'question_option_fields', f: question_option %>
+    <%= link_to_add_association 'add task', f, :question_options %>
+  <% end %>
 </div>
