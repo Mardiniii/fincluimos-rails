@@ -1,13 +1,22 @@
-<h4>Pregunta de única respuesta</h4>
 <div class="col-md-12">
-  <div class="field form-group">
-    <%= f.label :text, "Nombre" %>
-    <%= f.text_field :text, class: "form-control", id: "password" %>
-    <%= f.hidden_field :question_type, :value => :dropdown %>
+  <div class="field form-group nested-fields">
+    <h4>Pregunta de única respuesta</h4>
+    <div class="col-md-10 col-sm-9 col-xs-9">
+      <%= f.text_field :text, class: "form-control" %>
+      <%= f.hidden_field :question_type, :value => :dropdown %>
+    </div>
+
+    <div class="col-md-2 col-sm-3 col-xs-3">
+      <%= link_to_remove_association "<i class='glyphicon glyphicon-trash'></i>".html_safe, f, class: "btn btn-danger"%>
+    </div>
+
   </div>
 
-  <%= f.fields_for :question_options do |question_option| %>
-    <%= render 'question_option_fields', f: question_option %>
-    <%= link_to_add_association 'add task', f, :question_options %>
-  <% end %>
+  <div class="field form-groyp">
+    <% f.object.question_options.build if f.object.question_options.empty? %>
+    <%= f.fields_for :question_options do |question_option| %>
+      <%= render 'admin/forms/question_option_fields', f: question_option %>
+      <%= link_to_add_association 'Agregar Opción', f, :question_options %>
+    <% end %>
+  </div>
 </div>
