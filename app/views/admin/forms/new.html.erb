@@ -15,7 +15,7 @@
         <h2 class="text-center">Tipo de pregunta</h2>
         <div class="panel panel-default">
           <%= form.fields_for :questions do |question| %>
-            <%= link_to_add_association '<div class="panel-body">Selección Multiple</div>'.html_safe, @form, :questions, partial: 'admin/forms/question_fields_multiple_selection', class: "add-new-question question-type-option" %>
+            <%= link_to_add_association '<div class="panel-body">Selección Multiple</div>'.html_safe, form, :questions, partial: 'admin/forms/question_fields_multiple_selection', class: "add-new-question question-type-option", render_options: { locals: { question: question } } %>
           <% end %>
         </div>
         <div class="panel panel-default">

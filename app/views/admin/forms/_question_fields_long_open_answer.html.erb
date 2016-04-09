@@ -1,1 +1,8 @@
-<h1>Pregunta de respuesta abierta larga</h1>
+<h4>Pregunta de extensa respuesta abierta</h4>
+<div class="col-md-12">
+  <div class="field form-group">
+    <%= f.label :text, "Nombre" %>
+    <%= f.text_field :text, class: "form-control", id: "password" %>
+    <%= f.hidden_field :question_type, :value => :text %>
+  </div>
+</div>

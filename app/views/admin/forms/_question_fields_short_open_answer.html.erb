@@ -1,7 +1,8 @@
-<h1>Pregunta de respuesta abierta corta</h1>
+<h4>Pregunta de corta respuesta abierta</h4>
 <div class="col-md-12">
   <div class="field form-group">
-    <%= question.label :text, "Nombre", class: "lead lead-lg"  %>
-    <%= question.text_field :text, class: "form-control", id: "password" %>
+    <%= f.label :text, "Nombre" %>
+    <%= f.text_field :text, class: "form-control", id: "password" %>
+    <%= f.hidden_field :question_type, :value => :input %>
   </div>
 </div>

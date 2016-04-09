@@ -4,6 +4,17 @@ class Admin::FormsController < ApplicationController
     @form.questions.build
   end
 
+  def create
+    @form = Form.new(form_params)
+    if @form.save
+      flash[:notice] = "El formulario #{@form.name} fue creado con éxito"
+      redirect_to admin_forms_path
+    else
+      flash[:alert] = "Ha ocurrido un error y el formulario #{@form.name}, no ha sido almacenado"
+      render :action => 'new'
+    end
+  end
+
   def edit
   end
 
@@ -12,6 +23,6 @@ class Admin::FormsController < ApplicationController
 
   private
     def form_params
-      params.require(:form).permit(:name, questions_attributes: [:id, :text, :_destroy])
+      params.require(:form).permit(:name, questions_attributes: [:id, :text, :question_type, :_destroy])
     end
 end
