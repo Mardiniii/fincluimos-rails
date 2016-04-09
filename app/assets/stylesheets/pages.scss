@@ -1,3 +1,17 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.navbar{
+  background: #02ae8b;
+
+  .navbar-brand{
+    margin:0;
+    padding: 0;
+    .logo-header{
+      margin: 5px 0;
+      padding: 0;
+      max-width: 120px;
+    }
+  }
+
+}
