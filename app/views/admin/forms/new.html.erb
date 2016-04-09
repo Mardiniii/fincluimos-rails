@@ -15,22 +15,22 @@
         <h2 class="text-center">Tipo de pregunta</h2>
         <div class="panel panel-default">
           <%= form.fields_for :questions do |question| %>
-            <%= link_to_add_association '<div class="panel-body">Selección Multiple</div>'.html_safe, form, :questions, class: "add-new-question question-type-option" %>
+            <%= link_to_add_association '<div class="panel-body">Selección Multiple</div>'.html_safe, @form, :questions, partial: 'admin/forms/question_fields_multiple_selection', class: "add-new-question question-type-option" %>
           <% end %>
         </div>
         <div class="panel panel-default">
           <%= form.fields_for :questions do |question| %>
-            <%= link_to_add_association '<div class="panel-body">Única Respuesta Dropdown</div>'.html_safe, form, :questions, class: "add-new-question question-type-option" %>
+            <%= link_to_add_association '<div class="panel-body">Única Respuesta Dropdown</div>'.html_safe, form, :questions, partial: 'admin/forms/question_fields_unique_option', class: "add-new-question question-type-option" %>
           <% end %>
         </div>
         <div class="panel panel-default">
           <%= form.fields_for :questions do |question| %>
-            <%= link_to_add_association '<div class="panel-body">Respuesta abierta corta</div>'.html_safe, form, :questions, class: "add-new-question question-type-option" %>
+            <%= link_to_add_association '<div class="panel-body">Respuesta abierta corta</div>'.html_safe, form, :questions, partial: 'admin/forms/question_fields_short_open_answer', class: "add-new-question question-type-option" %>
           <% end %>
         </div>
         <div class="panel panel-default">
           <%= form.fields_for :questions do |question| %>
-            <%= link_to_add_association '<div class="panel-body">Respuesta abierta extensa</div>'.html_safe, form, :questions, class: "add-new-question question-type-option" %>
+            <%= link_to_add_association '<div class="panel-body">Respuesta abierta extensa</div>'.html_safe, form, :questions, partial: 'admin/forms/question_fields_long_open_answer', class: "add-new-question question-type-option" %>
           <% end %>
         </div>
       </div>
