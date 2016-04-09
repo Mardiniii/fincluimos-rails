@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-  get 'forms/new'
-  end
-
-  namespace :admin do
-  get 'forms/edit'
-  end
-
-  namespace :admin do
-  get 'forms/index'
-  end
-
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -21,6 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :collectors
+    resources :forms
   end
 
   namespace :api, defaults: { format: :json } do
