@@ -1,0 +1,22 @@
+<%= form_for(@user) do |user| %>
+  <% if @user.errors.any? %>
+    <% @user.errors.each do |attribute, message| %>
+      <h3 class="validation-error"><%= message %></h3>
+    <% end %>
+  <% end %>
+  <div class="row">
+    <%= render 'basic_info', user: user %>
+    <%= render 'secondary_info', user: user %>
+  </div>
+  <div class="row">
+    <%= render 'user_images', user: user %>
+    <%= render 'section_image', user: user %>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions form-group text-center">
+        <%= user.submit "Save user", class: "btn btn-ar btn-lg btn-success" %>
+      </div>
+    </div>
+  </div>
+<% end %>
