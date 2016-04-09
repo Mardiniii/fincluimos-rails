@@ -17,6 +17,7 @@
 #  updated_at             :datetime         not null
 #  role                   :integer
 #  company_id             :integer
+#  auth_token             :string
 #
 
 class User < ActiveRecord::Base
