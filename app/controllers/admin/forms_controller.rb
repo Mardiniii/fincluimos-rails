@@ -23,6 +23,6 @@ class Admin::FormsController < ApplicationController
 
   private
     def form_params
-      params.require(:form).permit(:name, questions_attributes: [:id, :text, :question_type, :_destroy, question_options_attributes: [:id, :text, :_destroy])
+      params.require(:form).permit(:name, questions_attributes: [:id, :text, :question_type, :_destroy, question_options_attributes: [:id, :text, :_destroy]])
     end
 end
