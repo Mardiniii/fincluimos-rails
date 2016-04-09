@@ -15,5 +15,5 @@ class Form < ActiveRecord::Base
   has_many :questions
   has_many :form_responses
 
-  accepts_nested_attributes_for :questions
+  accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
 end

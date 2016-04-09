@@ -1,47 +1,50 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h2 class="text-center">Nuevo Formulario</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <a href="" class="question-type-option">
-          <div class="panel-body">
-            Selección Multiple
-          </div>
-        </a>
-      </div>
-      <div class="panel panel-default">
-        <a href="" class="question-type-option">
-          <div class="panel-body">
-            Única Respuesta Dropdown
-          </div>
-        </a>
-      </div>
-      <div class="panel panel-default">
-        <a href="" class="question-type-option">
-          <div class="panel-body">
-            Corta Respuesta Abierta input
-          </div>
-        </a>
-      </div>
-      <div class="panel panel-default">
-        <a href="" class="question-type-option">
-          <div class="panel-body">
-            Larga Respuesta Abierta text
-          </div>
-        </a>
+<% if @form.new_record? %>
+  <% path = admin_forms_path %>
+<% else %>
+  <% path = admin_form_path(@form) %>
+<% end %>
+<%= form_for(@form, url: path) do |form| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center">Nuevo Formulario</h2>
+        <%= form.fields_for :questions do |question| %>
+          <%= link_to_add_association 'add question', form, :questions, class: "btn btn-default" %>
+        <% end %>
       </div>
     </div>
-    <div class="col-md-8">
-      <% if @form.new_record? %>
-        <% path = admin_forms_path %>
-      <% else %>
-        <% path = admin_form_path(@form) %>
-      <% end %>
-      <%= form_for(@form, url: path) do |form| %>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <a href="" class="question-type-option">
+            <div class="panel-body">
+              Selección Multiple
+            </div>
+          </a>
+        </div>
+        <div class="panel panel-default">
+          <a href="" class="question-type-option">
+            <div class="panel-body">
+              Única Respuesta Dropdown
+            </div>
+          </a>
+        </div>
+        <div class="panel panel-default">
+          <a href="" class="question-type-option">
+            <div class="panel-body">
+              Corta Respuesta Abierta input
+            </div>
+          </a>
+        </div>
+        <div class="panel panel-default">
+          <a href="" class="question-type-option">
+            <div class="panel-body">
+              Larga Respuesta Abierta text
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-8" id="questions-container">
         <% if @form.errors.any? %>
           <% @form.errors.each do |attribute, message| %>
             <h3 class="validation-error"><%= attribute %> <%= message %></h3>
@@ -53,11 +56,13 @@
             <%= form.submit "Guardar Formulario", class: "btn btn-ar btn-lg btn-success" %>
           </div>
         </div>
-      <% end %>
+
+      </div>
     </div>
+    <%#= render 'form' %>
   </div>
-  <%#= render 'form' %>
-</div>
+
+<% end %>
 
 <style>
   .panel-default:hover {
