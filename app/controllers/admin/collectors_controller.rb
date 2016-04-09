@@ -1,4 +1,7 @@
 class Admin::CollectorsController < ApplicationController
+  before_action :authenticate_user!
+  before_filter :content_permission
+
   def new
     @collector = User.new
   end
@@ -26,5 +29,11 @@ class Admin::CollectorsController < ApplicationController
   private
     def collector_params
       params.require(:user).permit(:first_name, :last_name, :email, :id_number)
+    end
+
+    def company_permission
+      unless current_user.admin?
+        redirect_to root_path, :alert => "Lo sentimos, usted no posee permisos de administrador para acceder a esta ruta."
+      end
     end
 end
