@@ -1,4 +1,4 @@
 class Api::ApiController < ApplicationController
-  protect_from_forgery with: :null_session
   include Authenticable
+  protect_from_forgery with: :null_session
 end
