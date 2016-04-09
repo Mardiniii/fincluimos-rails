@@ -17,6 +17,11 @@ Rails.application.routes.draw do
       resources :forms, only: [:index]
       resources :sessions, only: [:create,:destroy]
       resources :form_responses, only: [:create]
+      resources :sessions, only: [:create] do
+        collection do
+          delete :destroy
+        end
+      end
     end
   end
 
