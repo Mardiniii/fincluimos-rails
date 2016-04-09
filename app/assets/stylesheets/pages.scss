@@ -1,9 +1,32 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.navbar{
-  background: #02ae8b;
+$navBarbg: #02ae8b;
 
+
+.navbar-default .navbar-toggle .icon-bar{
+  background-color: white !important;
+}
+.navbar{
+  background: $navBarbg;
+  a{ color: white !important;}
+  ul a{
+    &:focus, &:hover{
+      background: rgba(0,0,0,0.3) !important;
+    }
+
+    color: white !important;
+    margin: 7px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.7);
+    padding: 5px 10px !important;
+    font-weight: 300;
+  }
+  .dropdown-menu{
+    border:none;
+    background: #02ae8b;
+    a{border: none;}
+  }
   .navbar-brand{
     margin:0;
     padding: 0;
@@ -14,4 +37,20 @@
     }
   }
 
+}
+
+
+.logo-login{
+  margin: 0 auto;
+  text-align: center;
+  img{max-width: 200px;}
+
+}
+.actions, .checkbox-container{
+  text-align: center;
+}
+.btn.btn-ar.btn-lg.btn-success{
+  text-align: center;
+  margin: 0 auto;
+  display: inline-block;
 }

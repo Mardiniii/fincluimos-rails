@@ -36,7 +36,9 @@
           <% end %>
 
         <% else %>
+          <% if params[:controller] != 'devise/sessions' && params[:action] != 'new' %>
           <li><%= link_to "Iniciar Sesión", new_user_session_path %></li>
+          <% end %>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
