@@ -7,13 +7,23 @@
     <% end %>
 
     <div class="field form-group">
+      <%= collector.label :first_name, "Nombre", class: "lead lead-lg"  %>
+      <%= collector.password_field :first_name, class: "form-control", id: "password" %>
+    </div>
+
+    <div class="field form-group">
+      <%= collector.label :last_name, "Apellidos", class: "lead lead-lg"  %>
+      <%= collector.password_field :last_name, class: "form-control", id: "password" %>
+    </div>
+
+    <div class="field form-group">
       <%= collector.label :email, "Correo Electrónico:", class: "lead lead-lg" %>
       <%= collector.text_field :email, required: true, :rows => 5, class: "form-control", id: "new_user_email" %>
     </div>
 
     <div class="field form-group">
-      <%= collector.label :password, "Contraseña", class: "lead lead-lg"  %>
-      <%= collector.password_field :password, class: "form-control", id: "password" %>
+      <%= collector.label :id_number, "Documento de Identidad:", class: "lead lead-lg"  %>
+      <%= collector.password_field :id_number, class: "form-control", id: "password" %>
     </div>
 
     <div class="col-md-12">
