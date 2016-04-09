@@ -18,6 +18,9 @@
 #  role                   :integer
 #  company_id             :integer
 #  auth_token             :string
+#  first_name             :string
+#  last_name              :string
+#  id_number              :string
 #
 
 class User < ActiveRecord::Base
