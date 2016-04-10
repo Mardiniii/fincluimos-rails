@@ -18,5 +18,5 @@ class QuestionResponse < ActiveRecord::Base
 
   has_many :question_option_question_responses, dependent: :destroy
   has_many :question_options, through: :question_option_question_responses, dependent: :destroy
-  accepts_nested_attributes_for :question_option_question_responses, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :question_option_question_responses, allow_destroy: true
 end

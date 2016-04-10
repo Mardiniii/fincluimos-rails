@@ -11,6 +11,8 @@ class Admin::FormsController < ApplicationController
   end
 
   def edit
+    @form = Form.find(params[:id])
+    @questions = @form.questions
   end
 
   def create
@@ -32,6 +34,6 @@ class Admin::FormsController < ApplicationController
 
   private
     def form_params
-      params.require(:form).permit(:name, questions_attributes: [:id, :text, :question_type, :_destroy, question_options_attributes: [:id, :text, :_destroy]])
+      params.require(:form).permit(:name, :description, questions_attributes: [:id, :text, :question_type, :_destroy, question_options_attributes: [:id, :text, :_destroy]])
     end
 end
