@@ -15,6 +15,11 @@ class Admin::FormsController < ApplicationController
     @questions = @form.questions
   end
 
+  def show
+    form = Form.find(params[:id])
+    @form_responses = form.form_reponses
+  end
+
   def create
     @form = Form.new(form_params)
     @form.company_id = current_user.company.id
