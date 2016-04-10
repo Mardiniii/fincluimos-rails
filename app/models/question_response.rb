@@ -19,4 +19,16 @@ class QuestionResponse < ActiveRecord::Base
   has_many :question_option_question_responses, dependent: :destroy
   has_many :question_options, through: :question_option_question_responses, dependent: :destroy
   accepts_nested_attributes_for :question_option_question_responses, allow_destroy: true
+
+
+  def to_s
+    case self.question.question_type.to_sym
+    when :input, :text
+      self.text
+    when :dropdown
+      self.question_option.text
+    when :checkbox
+      self.question_options.pluck(:text).join(',')
+    end
+  end
 end

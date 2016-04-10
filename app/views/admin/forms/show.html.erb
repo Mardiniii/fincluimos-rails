@@ -1,24 +1,28 @@
-<div class="box-body">
-  <div class="table-responsive">
-    <table class="table no-margin">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre del Formulario</th>
-          <th>Descripción</th>
-          <th># de respuestas</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% Form.all.each do |form| %>
-        <tr>
-          <td><a href="pages/examples/invoice.html"><%= form.id %></a></td>
-          <td><%= form.name %></td>
-          <td><span><%= form.description %></span></td>
-          <td><div class="sparkbar" data-color="#00a65a" data-height="20"><%= form.form_responses.count %></div></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div><!-- /.table-responsive -->
-</div><!-- /.box-body -->
+<div class="container">
+  <h2><%= @form.name %></h2>
+  <div class="box-body row">
+    <div class="table-responsive col-md-6">
+      <table class="table no-margin">
+        <thead>
+          <tr>
+            <% @form.questions.each do |question| %>
+              <th><%= question.text %></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @form.form_responses.each do |form_response| %>
+          <tr>
+            <% form_response.question_responses.each do |question_response| %>
+              <td><%= question_response.to_s %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to admin_forms_path do %>
+        <button type="button" class="btn btn-default" style="margin-top: 20px;">Regresar a formularios</button>
+      <% end %>
+    </div><!-- /.table-responsive -->
+  </div><!-- /.box-body -->
+</div>

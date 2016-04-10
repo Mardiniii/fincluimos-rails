@@ -16,8 +16,8 @@ class Admin::FormsController < ApplicationController
   end
 
   def show
-    form = Form.find(params[:id])
-    @form_responses = form.form_reponses
+    @form = current_company.forms.find(params[:id])
+    @form_responses = @form.form_responses
   end
 
   def create

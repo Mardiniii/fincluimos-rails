@@ -3,17 +3,19 @@ class Api::V1::FormResponsesController < ApplicationController
 
   def create
     form_response_array = form_response_params["form_responses"]
-    form_response_array.each do |form_response|
-      form_response[:question_responses_attributes] = form_response[:question_responses] || []
-      form_response[:question_responses_attributes] = form_response[:question_responses_attributes]
-        .map do |qr|
-        qr[:question_option_question_responses_attributes] = qr[:question_option_question_responses] || []
-        qr.delete(:question_option_question_responses)
-        qr
+    if form_response_array
+      form_response_array.each do |form_response|
+        form_response[:question_responses_attributes] = form_response[:question_responses] || []
+        form_response[:question_responses_attributes] = form_response[:question_responses_attributes]
+          .map do |qr|
+          qr[:question_option_question_responses_attributes] = qr[:question_option_question_responses] || []
+          qr.delete(:question_option_question_responses)
+          qr
+        end
+        form_response.delete(:question_responses)
+        form_response = FormResponse.new(form_response)
+        form_response.save
       end
-      form_response.delete(:question_responses)
-      form_response = FormResponse.new(form_response)
-      form_response.save
     end
     head :ok
   end
