@@ -1,4 +1,9 @@
 class Admin::FormsController < ApplicationController
+
+  def index
+    @forms = Form.all
+  end
+
   def new
     @form = Form.new
     @form.questions.build
@@ -17,9 +22,6 @@ class Admin::FormsController < ApplicationController
   end
 
   def edit
-  end
-
-  def index
   end
 
   private
