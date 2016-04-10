@@ -17,6 +17,7 @@ class Admin::FormsController < ApplicationController
 
   def create
     @form = Form.new(form_params)
+    @form.company_id = current_user.company.id
     if @form.save
       flash[:notice] = "El formulario #{@form.name} fue creado con éxito"
       redirect_to admin_forms_path
