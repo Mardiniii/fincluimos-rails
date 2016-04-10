@@ -42,7 +42,7 @@
           <div class="col-md-9 col-sm-9 col-xs-9">
             <div class="form-group reg-email">
               <div>
-                <%= collector.file_field :image, class: "input-file" %>
+                <%= collector.file_field :avatar, class: "input-file" %>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@
     <% else %>
       <div class="field form-group">
         <%= collector.label :id_number, "Imágen de perfil:", class: "lead lead-lg"  %>
-        <%= collector.file_field :image, required: true, class: "input-file form-control" %>
+        <%= collector.file_field :avatar, required: true, class: "input-file form-control" %>
       </div>
     <% end %>
 
