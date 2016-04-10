@@ -18,6 +18,8 @@ gem 'aws-sdk', '< 2.0'
 gem 'puma'
 gem 'jquery-ui-rails'
 gem "cocoon"
+gem "font-awesome-rails"
+gem 'ionicons-rails'
 
 group :development, :test do
   gem 'byebug'
