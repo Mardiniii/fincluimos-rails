@@ -13,6 +13,13 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui
+ *= require datepicker3
+ *= require daterangepicker-bs3
  *= require font-awesome
+ *= require jquery-jvectormap-1.2.2
+ *= require dataTables.bootstrap
+ *= require bootstrap-colorpicker
+ *= require bootstrap-slider
  *= require AdminLTE
+ *= require morris
  */

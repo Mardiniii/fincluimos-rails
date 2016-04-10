@@ -55,8 +55,14 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-slider-rails (6.1.6)
+      railties (>= 3.2, < 5.0)
+    bootstrap-wysihtml5-rails (0.3.3.8)
+      railties (>= 3.0)
     builder (3.2.2)
     byebug (8.2.4)
+    chart-js-rails (0.0.9)
+      railties (> 3.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -242,7 +248,10 @@ DEPENDENCIES
   annotate
   aws-sdk (< 2.0)
   bootstrap-sass (~> 3.3.6)
+  bootstrap-slider-rails
+  bootstrap-wysihtml5-rails
   byebug
+  chart-js-rails
   cocoon
   coffee-rails (~> 4.1.0)
   devise
