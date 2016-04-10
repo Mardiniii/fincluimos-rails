@@ -18,6 +18,13 @@ gem 'aws-sdk', '< 2.0'
 gem 'puma'
 gem 'jquery-ui-rails'
 gem "cocoon"
+gem "font-awesome-rails"
+
+# Template plugins
+gem 'ionicons-rails'
+gem 'bootstrap-slider-rails'
+gem 'bootstrap-wysihtml5-rails'
+gem 'chart-js-rails'
 
 group :development, :test do
   gem 'byebug'

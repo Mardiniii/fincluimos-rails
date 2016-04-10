@@ -55,8 +55,14 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap-slider-rails (6.1.6)
+      railties (>= 3.2, < 5.0)
+    bootstrap-wysihtml5-rails (0.3.3.8)
+      railties (>= 3.0)
     builder (3.2.2)
     byebug (8.2.4)
+    chart-js-rails (0.0.9)
+      railties (> 3.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -86,6 +92,8 @@ GEM
     eventmachine (1.2.0.1)
     execjs (2.6.0)
     ffi (1.9.10)
+    font-awesome-rails (4.5.0.0)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -107,6 +115,7 @@ GEM
     hirb (0.7.3)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
+    ionicons-rails (2.0.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -239,13 +248,18 @@ DEPENDENCIES
   annotate
   aws-sdk (< 2.0)
   bootstrap-sass (~> 3.3.6)
+  bootstrap-slider-rails
+  bootstrap-wysihtml5-rails
   byebug
+  chart-js-rails
   cocoon
   coffee-rails (~> 4.1.0)
   devise
+  font-awesome-rails
   guard
   guard-livereload (~> 2.5)
   hirb
+  ionicons-rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
