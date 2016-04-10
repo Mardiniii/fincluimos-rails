@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12 nested-fields">
   <h4>Pregunta de selección multiple</h4>
   <div class="col-md-10">
     <%= f.text_field :text, class: "form-control" %>
@@ -9,7 +9,7 @@
     <%= link_to_remove_association "<i class='glyphicon glyphicon-trash'></i>".html_safe, f, class: "btn btn-danger"%>
   </div>
 
-  <div class="field form-groyp">
+  <div class="field form-group">
     <% f.object.question_options.build if f.object.question_options.empty? %>
     <%= f.fields_for :question_options do |question_option| %>
       <%= render 'admin/forms/question_option_fields', f: question_option %>
