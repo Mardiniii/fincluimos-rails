@@ -9,12 +9,14 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :collectors
+    resources :forms
   end
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :forms, only: [:index]
       resources :sessions, only: [:create,:destroy]
+      resources :form_responses, only: [:create]
     end
   end
 

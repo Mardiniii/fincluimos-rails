@@ -12,8 +12,9 @@
 
 class Question < ActiveRecord::Base
   belongs_to :form
-  has_many :question_options
-  has_many :question_responses
+  has_many :question_options, dependent: :destroy
+  has_many :question_responses, dependent: :destroy
 
   enum question_type: [:dropdown,:input,:checkbox,:text]
+  accepts_nested_attributes_for :question_options, reject_if: :all_blank, allow_destroy: true
 end

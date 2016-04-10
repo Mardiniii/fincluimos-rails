@@ -10,5 +10,7 @@
 
 class FormResponse < ActiveRecord::Base
   belongs_to :form
-  has_many :question_responses
+  has_many :question_responses, dependent: :destroy
+
+  accepts_nested_attributes_for :question_responses, allow_destroy: true
 end

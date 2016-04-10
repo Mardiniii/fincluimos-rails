@@ -12,8 +12,8 @@
 
 class Form < ActiveRecord::Base
   belongs_to :company
-  has_many :questions
-  has_many :form_responses
+  has_many :questions, dependent: :destroy
+  has_many :form_responses, dependent: :destroy
 
-  accepts_nested_attributes_for :questions
+  accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
 end

@@ -1,0 +1,75 @@
+<% if @form.new_record? %>
+  <% path = admin_forms_path %>
+<% else %>
+  <% path = admin_form_path(@form) %>
+<% end %>
+<%= form_for(@form, url: path) do |form| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">Nuevo Formulario</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="text-center">Tipo de pregunta</h2>
+        <div class="panel panel-default">
+          <%= form.fields_for :questions do |question| %>
+            <%= link_to_add_association '<div class="panel-body">Selección Multiple</div>'.html_safe, form, :questions, partial: 'admin/forms/question_fields_multiple_selection', class: "add-new-question question-type-option", render_options: { locals: { question: question } } %>
+          <% end %>
+        </div>
+        <div class="panel panel-default">
+          <%= form.fields_for :questions do |question| %>
+            <%= link_to_add_association '<div class="panel-body">Única Respuesta Dropdown</div>'.html_safe, form, :questions, partial: 'admin/forms/question_fields_unique_option', class: "add-new-question question-type-option" %>
+          <% end %>
+        </div>
+        <div class="panel panel-default">
+          <%= form.fields_for :questions do |question| %>
+            <%= link_to_add_association '<div class="panel-body">Respuesta abierta corta</div>'.html_safe, form, :questions, partial: 'admin/forms/question_fields_short_open_answer', class: "add-new-question question-type-option" %>
+          <% end %>
+        </div>
+        <div class="panel panel-default">
+          <%= form.fields_for :questions do |question| %>
+            <%= link_to_add_association '<div class="panel-body">Respuesta abierta extensa</div>'.html_safe, form, :questions, partial: 'admin/forms/question_fields_long_open_answer', class: "add-new-question question-type-option" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-8" id="questions-container">
+        <% if @form.errors.any? %>
+          <% @form.errors.each do |attribute, message| %>
+            <h3 class="validation-error"><%= attribute %> <%= message %></h3>
+          <% end %>
+        <% end %>
+          <div class="form-group">
+            <label for="exampleInputName2">Nombre del formulario</label>
+            <%= form.text_field :name, placeholder: 'Nombre del formulario', class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail2">Descripción del formulario</label>
+            <%= form.text_field :description, placeholder: 'Descripción del formulario', class: 'form-control' %>
+          </div>
+      </div>
+      <div class="row" style="margin-top: 20px;">
+        <div class="actions form-group text-center">
+          <%= form.submit "Guardar Formulario", class: "btn btn-ar btn-lg btn-success" %>
+        </div>
+      </div>
+    </div>
+    <%#= render 'form' %>
+  </div>
+
+<% end %>
+
+<style>
+  .panel-default:hover {
+    background-color: #dfdfdf !important;
+  }
+</style>
+
+<script>
+  $(document).ready(function() {
+    $("a.add-new-question").
+      data("association-insertion-method", 'append').
+      data("association-insertion-node", '#questions-container');
+  });
+</script>
