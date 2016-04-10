@@ -10,6 +10,9 @@ class Admin::FormsController < ApplicationController
     @form.questions.each { |q| q.question_options.build }
   end
 
+  def edit
+  end
+
   def create
     @form = Form.new(form_params)
     if @form.save
@@ -21,7 +24,10 @@ class Admin::FormsController < ApplicationController
     end
   end
 
-  def edit
+  def destroy
+    form = Form.find(params[:id])
+    form.destroy
+    redirect_to admin_forms_path
   end
 
   private
