@@ -29,6 +29,8 @@ class QuestionResponse < ActiveRecord::Base
       self.question_option.text if self.question_option.text
     when :checkbox
       self.question_options.pluck(:text).join(',') if self.question_options
+    else
+      ''
     end
   end
 end
