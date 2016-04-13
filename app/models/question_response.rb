@@ -24,11 +24,11 @@ class QuestionResponse < ActiveRecord::Base
   def to_s
     case self.question.question_type.to_sym
     when :input, :text
-      self.text
+      self.text if self.text
     when :dropdown
-      self.question_option.text
+      self.question_option.text if self.question_option.text
     when :checkbox
-      self.question_options.pluck(:text).join(',')
+      self.question_options.pluck(:text).join(',') if self.question_options
     end
   end
 end
