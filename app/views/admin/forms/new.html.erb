@@ -67,9 +67,13 @@
 </style>
 
 <script>
-  $(document).ready(function() {
-    $("a.add-new-question").
+  (function(){
+    var setupCocoon = function() {
+      $("a.add-new-question").
       data("association-insertion-method", 'append').
       data("association-insertion-node", '#questions-container');
-  });
+    }
+    $(document).on('ready',setupCocoon);
+    $(document).on('page:load',setupCocoon);
+  })()
 </script>
