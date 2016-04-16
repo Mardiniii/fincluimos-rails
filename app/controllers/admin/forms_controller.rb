@@ -1,17 +1,17 @@
 class Admin::FormsController < ApplicationController
 
   def index
-    @forms = Form.all
+    @forms = current_company.forms.all
   end
 
   def new
-    @form = Form.new
+    @form = current_company.forms.build
     @form.questions.build
     @form.questions.each { |q| q.question_options.build }
   end
 
   def edit
-    @form = Form.find(params[:id])
+    @form = current_company.forms.find(params[:id])
     @questions = @form.questions
   end
 
@@ -21,8 +21,7 @@ class Admin::FormsController < ApplicationController
   end
 
   def create
-    @form = Form.new(form_params)
-    @form.company_id = current_user.company.id
+    @form = current_company.forms.build(form_params)
     if @form.save
       flash[:notice] = "El formulario #{@form.name} fue creado con éxito"
       redirect_to admin_forms_path
@@ -33,7 +32,7 @@ class Admin::FormsController < ApplicationController
   end
 
   def destroy
-    form = Form.find(params[:id])
+    form = current_company.forms.find(params[:id])
     form.destroy
     redirect_to admin_forms_path
   end
