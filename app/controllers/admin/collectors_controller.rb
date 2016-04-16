@@ -3,15 +3,14 @@ class Admin::CollectorsController < ApplicationController
   before_filter :company_permission
 
   def new
-    @collector = User.new
+    @collector = current_company.users.build
   end
 
   def create
-    @collector = User.new(collector_params)
+    @collector = current_company.users.build(collector_params)
     generated_password = Devise.friendly_token.first(8)
     @collector.password = generated_password
-    @collector.company = current_user.company
-    @collector.role = 2
+    @collector.role = :info_collector
     if @collector.save
       flash[:notice] = "El asesor móvil #{@collector.first_name} #{@collector.last_name} fue creado con éxito"
       redirect_to admin_collectors_path
@@ -22,11 +21,11 @@ class Admin::CollectorsController < ApplicationController
   end
 
   def edit
-    @collector = User.find(params[:id])
+    @collector = current_company.users.find(params[:id])
   end
 
   def update
-    @collector = User.find(params[:id])
+    @collector = current_company.users.find(params[:id])
     if @collector.update(collector_params)
       flash[:notice] = "El asesor móvil #{@collector.first_name} #{@collector.last_name} ha sido editado con éxito"
       redirect_to admin_collectors_path
@@ -37,11 +36,11 @@ class Admin::CollectorsController < ApplicationController
   end
 
   def index
-    @collectors = User.where(role: 2)
+    @collectors = current_company.users.where(role: :info_collector)
   end
 
   def destroy
-    @collector = User.find(params[:id])
+    @collector = current_company.users.find(params[:id])
     @collector.destroy
     redirect_to admin_collectors_path
   end
