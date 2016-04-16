@@ -15,6 +15,17 @@ class Admin::FormsController < ApplicationController
     @questions = @form.questions
   end
 
+  def update
+    @form = current_company.forms.find(params[:id])
+    if @form.update(form_params)
+      flash[:notice] = "El formulario #{@form.name} fue actualizado con éxito"
+      redirect_to edit_admin_form(@form.id)
+    else
+      flash[:alert] = "Ha ocurrido un error y el formulario #{@form.name}, no ha sido actualizado"
+      render :action => 'edit'
+    end
+  end
+
   def show
     @form = current_company.forms.find(params[:id])
     @form_responses = @form.form_responses
