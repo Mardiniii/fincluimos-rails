@@ -6,8 +6,6 @@ class Admin::FormsController < ApplicationController
 
   def new
     @form = current_company.forms.build
-    @form.questions.build
-    @form.questions.each { |q| q.question_options.build }
   end
 
   def edit
