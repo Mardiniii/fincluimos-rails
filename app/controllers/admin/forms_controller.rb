@@ -19,7 +19,7 @@ class Admin::FormsController < ApplicationController
     @form = current_company.forms.find(params[:id])
     if @form.update(form_params)
       flash[:notice] = "El formulario #{@form.name} fue actualizado con éxito"
-      redirect_to edit_admin_form(@form.id)
+      redirect_to admin_forms_path
     else
       flash[:alert] = "Ha ocurrido un error y el formulario #{@form.name}, no ha sido actualizado"
       render :action => 'edit'
