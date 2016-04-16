@@ -1,0 +1,6 @@
+es:
+  question_type:
+    input: Respuesta abierta corta
+    text: Respuesta abierta larga
+    dropdown: Selección multiple, única opción
+    checkbox: Selección multiple

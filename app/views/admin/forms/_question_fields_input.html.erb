@@ -1,8 +1,8 @@
 <div class="col-md-12 nested-fields margin-bottom">
-  <h4>Pregunta de extensa respuesta abierta</h4>
+  <h4><%= t("question_type.#{f.object.question_type}") %></h4>
   <div class="col-md-10 col-sm-9 col-xs-9">
-    <%= f.text_field :text, class: "form-control" %>
-    <%= f.hidden_field :question_type, :value => :text %>
+    <%= f.text_field :text, class: "form-control", id: "password" %>
+    <%= f.hidden_field :question_type, :value => :input %>
   </div>
 
   <div class="col-md-2 col-sm-3 col-xs-3">

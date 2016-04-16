@@ -1,5 +1,5 @@
 <div class="col-md-12 nested-fields">
-  <h4>Pregunta de selección multiple</h4>
+  <h4><%= t("question_type.#{f.object.question_type}") %></h4>
   <div class="col-md-10">
     <%= f.text_field :text, class: "form-control" %>
     <%= f.hidden_field :question_type, :value => :checkbox %>

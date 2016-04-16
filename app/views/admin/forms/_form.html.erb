@@ -13,18 +13,11 @@
     <div class="row">
       <div class="col-md-4">
         <h2 class="text-center">Tipo de pregunta</h2>
-        <%= form.fields_for @form.questions[0...1] do |question| %>
+        <% Question.question_types.keys.each do |question_type| %>
           <div class="panel panel-default">
-              <%= link_to_add_association '<div class="panel-body">Selección Multiple</div>'.html_safe, form, :questions, partial: 'admin/forms/question_fields_multiple_selection', class: "add-new-question question-type-option", render_options: { locals: { question: question } } %>
-          </div>
-          <div class="panel panel-default">
-            <%= link_to_add_association '<div class="panel-body">Única Respuesta Dropdown</div>'.html_safe, form, :questions, partial: 'admin/forms/question_fields_unique_option', class: "add-new-question question-type-option" %>
-          </div>
-          <div class="panel panel-default">
-            <%= link_to_add_association '<div class="panel-body">Respuesta abierta corta</div>'.html_safe, form, :questions, partial: 'admin/forms/question_fields_short_open_answer', class: "add-new-question question-type-option" %>
-          </div>
-          <div class="panel panel-default">
-            <%= link_to_add_association '<div class="panel-body">Respuesta abierta extensa</div>'.html_safe, form, :questions, partial: 'admin/forms/question_fields_long_open_answer', class: "add-new-question question-type-option" %>
+            <%= link_to_add_association form, :questions, partial: "admin/forms/question_fields_#{question_type}", class: "add-new-question question-type-option" do %>
+              <div class="panel-body"><%= t("question_type.#{question_type}") %></div>
+            <% end %>
           </div>
         <% end %>
       </div>
@@ -44,8 +37,7 @@
         </div>
         <%= form.fields_for :questions do |question_form| %>
           <% question = question_form.object %>
-          <%= render 'admin/forms/question_fields_short_open_answer', f: question_form if question.input? %>
-          <%= render 'admin/forms/question_fields_unique_option', f: question_form if question.dropdown? %>
+          <%= render "admin/forms/question_fields_#{question.question_type}", f: question_form %>
         <% end %>
 
       </div>
