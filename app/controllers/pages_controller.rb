@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!
+  
   def home
     @collectors = current_user.company.users.where(role: 2)
     @forms = current_user.company.forms
@@ -18,12 +19,9 @@ class PagesController < ApplicationController
         value: form.form_responses.count,
         color: section_color,
         highlight: section_color,
-        label: form.name
+        label: form.name[0..26]
        }
     end
-    puts "!!!!!!!!!!!!!!!!"
-    p labels_array
-    p [labels_array.to_json, pie_chart_array.to_json][0]
     [labels_array, pie_chart_array.to_json]
   end
 
