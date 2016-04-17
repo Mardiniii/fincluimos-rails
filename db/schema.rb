@@ -34,9 +34,10 @@ ActiveRecord::Schema.define(version: 20160418045604) do
   create_table "forms", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.text     "description"
+    t.integer  "form_responses_count", default: 0
   end
 
   add_index "forms", ["company_id"], name: "index_forms_on_company_id", using: :btree
