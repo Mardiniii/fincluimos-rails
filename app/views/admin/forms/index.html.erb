@@ -1,15 +1,21 @@
 <div class="container">
+  <h1 class="margin-bottom">Lista de formularios</h1>
+  <hr>
   <div class="row">
     <% @forms.each do |form| %>
       <div class="col-sm-6 col-md-6">
         <div class="thumbnail">
           <div class="caption">
+            <%= link_to admin_form_path(form), method: :delete, data: { confirm: '¿Esta seguro que desea eliminarlo?' } do %>
+              <i data-toggle="tooltip" data-placement="top" title="Eliminar" class="pull-right glyphicon glyphicon-trash" style="color: #DD4B39"></i>
+            <% end %>
+            <%= link_to edit_admin_form_path(form) do %>
+              <i data-toggle="tooltip" data-placement="top" title="Editar" class="pull-right glyphicon glyphicon-pencil margin-right" style="color: #42C0FB"></i>
+            <% end %>
             <h4><%= form.name %></h4>
             <p><%= form.description %></p>
             <p>
               <%= link_to "Ver", admin_form_path(form), class: "btn btn-success" %>
-              <%= link_to "Editar", edit_admin_form_path(form), class: "btn btn-warning" %>
-              <%= link_to "Eliminar", admin_form_path(form), method: :delete, data: { confirm: '¿Esta seguro que desea eliminarlo?' }, class: "btn btn-danger" %>
              </p>
           </div>
         </div>
@@ -17,3 +23,9 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
