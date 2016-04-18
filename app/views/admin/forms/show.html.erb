@@ -1,19 +1,20 @@
-<div class="container-fluid">
+<div class="container">
   <h2><%= @form.name %></h2>
   <div class="box-body row">
     <div class="table-responsive col-md-12">
       <table class="table no-margin">
         <thead>
           <tr>
-            <% @form.questions.each do |question| %>
+            <% @form.questions.limit(5).each do |question| %>
               <th><%= question.text %></th>
             <% end %>
+              <th>Ver</th>
           </tr>
         </thead>
         <tbody>
           <% @form.form_responses.each do |form_response| %>
           <tr>
-            <% form_response.question_responses.each do |question_response| %>
+            <% form_response.question_responses.limit(5).each do |question_response| %>
               <td>
                 <% if question_response.question.image? %>
                   <%= image_tag question_response.image.url(:thumb) %>
@@ -22,6 +23,11 @@
                 <% end %>
               </td>
             <% end %>
+              <td>
+                <%= link_to admin_form_response_path(form_response) do %>
+                  <i class="glyphicon glyphicon-eye-open"></i>
+                <% end %>
+              </td>
           </tr>
           <% end %>
         </tbody>

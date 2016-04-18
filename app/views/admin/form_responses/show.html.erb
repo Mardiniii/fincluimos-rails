@@ -1,0 +1,16 @@
+<div class="container">
+  <h2></h2>
+  <div class="box-body row">
+    <div class="table-responsive col-md-10">
+      <% @form_questions.each do |question| %>
+          <p><strong><%= question.text %>: </strong>
+            <% if question.question_responses.first.question.image? %>
+              <%= image_tag question.question_responses.first.image.url(:thumb) %>
+            <% else %>
+              <%= question.question_responses.first.to_s %>
+            <% end %>
+          <p>
+      <% end %>
+    </div><!-- /.table-responsive -->
+  </div><!-- /.box-body -->
+</div>
