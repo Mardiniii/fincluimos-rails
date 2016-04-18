@@ -2,7 +2,7 @@ if Rails.env.development?
   User.find_or_create_by(email: 'sebas@kaizendevs.com') { |u| u.password =  "holamama"; u.role = :superadmin }
 
   company = Company.find_or_create_by(name: "Kaizen Devs")
-  admin = company.users.find_or_create_by(email: "admin@kforms.com") { |u| u.password = "password"; u.role = :admin }
+  admin = company.users.find_or_create_by(email: "demo@harvestdata.co") { |u| u.password = "password"; u.role = :admin }
   info_collector = company.users.find_or_create_by(email: "info_collector@kforms.com") { |u| u.password = "password"; u.role = :info_collector; u.avatar = File.new("app/assets/images/kaizen-5.jpg"); u.first_name = "Sebastian"; u.last_name = "Zapata Mardini" }
 
   form = company.forms.find_or_create_by(name: "Solicitud de Micro-crédito")
@@ -85,6 +85,8 @@ if Rails.env.development?
   municipal_associations_question = form.questions.find_or_create_by(text: "Asociaciones en municipio") { |q| q.question_type = :dropdown }
     municipal_associations_question.question_options.find_or_create_by(text: "Sí")
     municipal_associations_question.question_options.find_or_create_by(text: "No")
+
+  form.questions.find_or_create_by(text: "Evidencia fotográfica") { |q| q.question_type = :image }
 
   # q = form.questions.find_or_create_by(text: "Grupo etnico") { |q| q.question_type = :dropdown }
   #   q.question_options.find_or_create_by(text: "Indigena")
