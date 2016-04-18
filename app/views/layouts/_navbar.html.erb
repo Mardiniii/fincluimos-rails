@@ -18,18 +18,19 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <% if current_user.admin? %>
+          <li><%= link_to 'Dashboard', root_path %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Asesores<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><%= link_to 'Nuevo', new_admin_collector_path %></li>
-                <li><%= link_to 'Listado', admin_collectors_path %></li>
+                <li><%= link_to 'Nuevo Asesor', new_admin_collector_path %></li>
+                <li><%= link_to 'Mis Asesores', admin_collectors_path %></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Formularios<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><%= link_to 'Nuevo', new_admin_form_path %></li>
-                <li><%= link_to 'Listado', admin_forms_path %></li>
+                <li><%= link_to 'Nuevo Formulario', new_admin_form_path %></li>
+                <li><%= link_to 'Mis Formularios', admin_forms_path %></li>
               </ul>
             </li>
             <li class="dropdown">

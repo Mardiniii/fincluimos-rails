@@ -3,7 +3,10 @@
 
   company = Company.find_or_create_by(name: "Kaizen Devs")
   admin = company.users.find_or_create_by(email: "demo@harvestdata.co") { |u| u.password = "password"; u.role = :admin }
-  info_collector = company.users.find_or_create_by(email: "info_collector@kforms.com") { |u| u.password = "password"; u.role = :info_collector; u.avatar = File.new("app/assets/images/kaizen-5.jpg"); u.first_name = "Sebastian"; u.last_name = "Zapata Mardini" }
+  info_collector = company.users.find_or_create_by(email: "info_collector@harvestdata.co") { |u| u.password = "password"; u.role = :info_collector; u.avatar = File.new("app/assets/images/kaizen-5.jpg"); u.first_name = "Sebastian"; u.last_name = "Zapata Mardini" }
+  info_collector = company.users.find_or_create_by(email: "alejo@harvestdata.co") { |u| u.password = "password"; u.role = :info_collector; u.avatar = File.new("app/assets/images/team-alejo.jpg"); u.first_name = "Alejandro"; u.last_name = "Escobar" }
+  info_collector = company.users.find_or_create_by(email: "german@harvestdata.co") { |u| u.password = "password"; u.role = :info_collector; u.avatar = File.new("app/assets/images/team-german.jpg"); u.first_name = "Germán"; u.last_name = "Hernández" }
+  info_collector = company.users.find_or_create_by(email: "simon@harvestdata.co") { |u| u.password = "password"; u.role = :info_collector; u.avatar = File.new("app/assets/images/simon-soriano.jpg"); u.first_name = "Simón"; u.last_name = "Soriano" }
 
   form = company.forms.find_or_create_by(name: "Solicitud de Micro-crédito")
 
