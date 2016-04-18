@@ -15,6 +15,6 @@ class Question < ActiveRecord::Base
   has_many :question_options, dependent: :destroy
   has_many :question_responses, dependent: :destroy
 
-  enum question_type: [:dropdown,:input,:checkbox,:text]
+  enum question_type: [:dropdown,:input,:checkbox,:text,:image]
   accepts_nested_attributes_for :question_options, reject_if: :all_blank, allow_destroy: true
 end

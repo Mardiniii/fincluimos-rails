@@ -10,7 +10,7 @@ class Admin::CollectorsController < ApplicationController
     @collector = current_company.users.build(collector_params)
     generated_password = Devise.friendly_token.first(8)
     @collector.password = generated_password
-    @collector.role = :info_collector
+    @collector.role = User.roles[:info_collector]
     if @collector.save
       flash[:notice] = "El asesor móvil #{@collector.first_name} #{@collector.last_name} fue creado con éxito"
       redirect_to admin_collectors_path
@@ -36,7 +36,7 @@ class Admin::CollectorsController < ApplicationController
   end
 
   def index
-    @collectors = current_company.users.where(role: :info_collector)
+    @collectors = current_company.users.where(role: User.roles[:info_collector])
   end
 
   def destroy
