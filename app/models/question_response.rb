@@ -27,7 +27,7 @@ class QuestionResponse < ActiveRecord::Base
 
   def to_s
     case self.question.question_type.to_sym
-    when :input, :text
+    when :input, :text, :date
       self.text || ''
     when :dropdown
       self.question_option.try(:text) || ''
