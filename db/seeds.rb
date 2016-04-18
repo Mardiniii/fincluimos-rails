@@ -1,4 +1,4 @@
-if Rails.env.development?
+# if Rails.env.development?
   User.find_or_create_by(email: 'sebas@kaizendevs.com') { |u| u.password =  "holamama"; u.role = :superadmin }
 
   company = Company.find_or_create_by(name: "Kaizen Devs")
@@ -123,4 +123,4 @@ if Rails.env.development?
   #   q2.question_options.find_or_create_by(text: "Merengue")
 
 
-end
+# end
