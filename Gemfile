@@ -19,6 +19,7 @@ gem 'puma'
 gem 'jquery-ui-rails'
 gem "cocoon"
 gem "font-awesome-rails"
+gem 'faker', '~> 1.6', '>= 1.6.3'
 
 # Template plugins
 gem 'ionicons-rails'
