@@ -34,7 +34,7 @@
             <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Total encuestas llenadas</span>
-              <span class="info-box-number"><%= QuestionResponse.all.count %></span>
+              <span class="info-box-number"><%= FormResponse.all.count %></span>
             </div><!-- /.info-box-content -->
           </div><!-- /.info-box -->
         </div><!-- /.col -->
@@ -136,13 +136,13 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                       <div class="chart-responsive">
                         <canvas id="pieChart" height="150"></canvas>
                       </div><!-- ./chart-responsive -->
                     </div><!-- /.col -->
-                    <div class="col-md-4">
-                      <ul class="chart-legend clearfix">
+                    <div class="col-md-7">
+                      <ul class="chart-legend clearfix" style="width: 500px">
                         <% @pie_chart[0].each do |hash| %>
                           <li><i class="fa fa-circle-o" style="color: <%= hash[:color] %>"></i> <%= hash[:name] %></li>
                         <% end %>
@@ -430,7 +430,7 @@ $(function () {
         pointStrokeColor: "rgba(60,141,188,1)",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(60,141,188,1)",
-        data: <%= raw monthly_form_responses(@forms) %>
+        data: <%= raw monthly_form_responses(FormResponse.all) %>
       }
     ]
   };

@@ -14,7 +14,7 @@ module PagesHelper
   end
 
   def monthly_form_responses(forms)
-    past_year_forms(forms).map { |f| f != 0 ? f.sum(:form_responses_count).to_i : 0 }
+    past_year_forms(forms).map { |f| f != 0 ? f.count : 0 }
   end
 
 end

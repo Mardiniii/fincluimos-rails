@@ -26,10 +26,10 @@
 
   form.questions.find_or_create_by(text: "Número de id de la solicitud") { |q| q.question_type = :input }
   first_name_question = form.questions.find_or_create_by(text: "Nombres y Apellidos") { |q| q.question_type = :input }
-  person_id_question = form.questions.find_or_create_by(text: "Número de id del solicitante") { |q| q.question_type = :input }
+  person_id_question = form.questions.find_or_create_by(text: "Cédula") { |q| q.question_type = :input }
   cellphone_question = form.questions.find_or_create_by(text: "Número de celular") { |q| q.question_type = :input }
   email_question = form.questions.find_or_create_by(text: "Correo electrónico") { |q| q.question_type = :input }
-  birthday_question = form.questions.find_or_create_by(text: "Fecha de nacimiento") { |q| q.question_type = :input }
+  birthday_question = form.questions.find_or_create_by(text: "Fecha de nacimiento") { |q| q.question_type = :date }
   form.questions.find_or_create_by(text: "Edad") { |q| q.question_type = :input }
 
   gender_question = form.questions.find_or_create_by(text: "Género") { |q| q.question_type = :dropdown }
