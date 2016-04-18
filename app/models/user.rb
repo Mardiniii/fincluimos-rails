@@ -30,7 +30,7 @@
 class User < ActiveRecord::Base
   # Add paperclip resource
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "242x200#", mini_thumb: "100x100#" }, default_url: "http://i592.photobucket.com/albums/tt5/Mardini03/imagen-no-disponible.png"
-    validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable

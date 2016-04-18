@@ -14,7 +14,13 @@
           <% @form.form_responses.each do |form_response| %>
           <tr>
             <% form_response.question_responses.each do |question_response| %>
-              <td><%= question_response.to_s %></td>
+              <td>
+                <% if question_response.question.image? %>
+                  <%= image_tag question_response.image.url(:thumb) %>
+                <% else %>
+                  <%= question_response.to_s %>
+                <% end %>
+              </td>
             <% end %>
           </tr>
           <% end %>
