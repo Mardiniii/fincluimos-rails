@@ -2,15 +2,28 @@
   <h2></h2>
   <div class="box-body row">
     <div class="table-responsive col-md-10">
-      <% @form_questions.each do |question| %>
-          <p><strong><%= question.text %>: </strong>
-            <% if question.question_responses.first.question.image? %>
-              <%= image_tag question.question_responses.first.image.url(:thumb) %>
-            <% else %>
-              <%= question.question_responses.first.to_s %>
-            <% end %>
-          <p>
-      <% end %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Pregunta</th>
+            <th>Respuesta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @form_response.question_responses.each do |question_response| %>
+            <tr>
+              <td><strong><%= question_response.question.text %>: </strong></td>
+              <td>
+                <% if question_response.question.image? %>
+                  <%= image_tag question_response.image.url(:thumb) %>
+                <% else %>
+                  <%= question_response.to_s %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div><!-- /.table-responsive -->
   </div><!-- /.box-body -->
 </div>

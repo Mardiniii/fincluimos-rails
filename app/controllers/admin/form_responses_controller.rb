@@ -1,6 +1,5 @@
 class Admin::FormResponsesController < ApplicationController
   def show
-    @form_response = FormResponse.find(params[:id])
-    @form_questions = @form_response.form.questions
+    @form_response = current_company.form_responses.find(params[:id])
   end
 end

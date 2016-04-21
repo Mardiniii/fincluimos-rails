@@ -12,6 +12,7 @@
 class Company < ActiveRecord::Base
   has_many :users, dependent: :destroy
   has_many :forms, dependent: :destroy
+  has_many :form_responses, through: :forms
 
   enum  company_type: [:bank, :cooperative, :government, :ngo]
 end
